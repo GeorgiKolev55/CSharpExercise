@@ -18,7 +18,6 @@ namespace eCommerceApi.MappingConfigurations
             CreateMap<User, UserDtoExport>();
             CreateMap<Product, ProductDtoExport>();
             CreateMap<Order, OrderDtoExport>();
-            
         }
     }
 }

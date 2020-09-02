@@ -12,6 +12,7 @@ namespace eCommerceApi.Data
         public SqlProductRepository(ECommerceContext context)
         {
             this.context = context;
+            
         }
         public void CreateProduct(Product product)
         {

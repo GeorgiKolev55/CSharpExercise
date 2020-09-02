@@ -25,6 +25,7 @@ namespace eCommerceApi.Controllers
         [HttpPost("create")]
         public IActionResult Create(OrderDtoImport order)
         {
+            var enumParse = Enum.Parse<OrderStatus>(order.Status);
             Order order1 = mapper.Map<Order>(order);
             this.repository.CreateOrder(order1);
             return Ok();

@@ -10,17 +10,19 @@ using System.Threading.Tasks;
 
 namespace eCommerceApi.Controllers
 {
-    [Route("products")]
+    [Route("product")]
     [ApiController]
     public class ProductController : Controller
     {
         private readonly IProductRepository repository;
         private readonly IMapper mapper;
-        public ProductController(IProductRepository repository,IMapper mapper)
+        public ProductController(IProductRepository repository, IMapper mapper)
         {
+
             this.mapper = mapper;
             this.repository = repository;
         }
+
         [HttpPost("create")]
         public IActionResult Create(ProductDtoImport product)
         {
@@ -30,7 +32,7 @@ namespace eCommerceApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult deleteProduct(int id)
+        public ActionResult DeleteProduct(int id)
         {
             repository.DeleteProduct(id);
             return Ok();//responseStatus
@@ -40,7 +42,7 @@ namespace eCommerceApi.Controllers
         public ActionResult<ProductDtoExport> GetNewProduct(int id)
         {
             Product product = repository.GetProduct(id);
-            if (product==null)
+            if (product == null)
             {
                 return NotFound();
             }
@@ -48,7 +50,7 @@ namespace eCommerceApi.Controllers
             return Ok(mapper.Map<ProductDtoExport>(product));
         }
 
-        [HttpGet]
+        [HttpGet("getAll")]
         public ActionResult<IEnumerable<ProductDtoExport>> GetAllProducts()
         {
             var products = repository.GetAllProdcts();

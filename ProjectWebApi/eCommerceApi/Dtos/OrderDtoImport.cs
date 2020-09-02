@@ -12,7 +12,7 @@ namespace eCommerceApi.Dtos
         [Required]
         public decimal TotalPrice { get; set; }
         [Required]
-        public OrderStatus Status { get; set; }
+        public string Status { get; set; }
 
         [Required]
         public DateTime Created_At { get; set; }
