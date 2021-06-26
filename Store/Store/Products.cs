@@ -15,9 +15,14 @@ namespace Store
 
         public decimal Price { get; set; }
 
+        
         public virtual string ToReceipt(float amount)
         {
-            return $"{Name} {Brand}";
+            return "";
+        }
+        public override string ToString()
+        {
+            return $"{Name} {Brand}"; ;
         }
     }
 }

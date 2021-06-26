@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Store
 {
@@ -15,13 +13,16 @@ namespace Store
     }
     class Clothes : Products, IDiscount
     {
+        private const int TEN_PERCENT_DISCOUNT = 10;
+        
         public ClothesSize Size { get; set; }
 
         public string Color { get; set; }
 
         public override string ToReceipt(float amount)
         {
-            string toReturn = base.ToReceipt(amount) + $" {Color}\n{amount} x ${this.Price} = ${(decimal)amount * this.Price:F2}\n";
+            string toReturn = base.ToString() + $" {Color}\n{amount} x ${this.Price} = ${(decimal)amount * this.Price:F2}\n";
+           
             if (CheckForDiscount() != 0)
             {
                 int discount = CheckForDiscount();
@@ -31,16 +32,18 @@ namespace Store
 
                 toReturn += $"#discount {discount}% -${discountInDollars:F2}\n";
             }
+
             return toReturn;
         }
 
         public int CheckForDiscount()
         {
 
-            string dayOfTheWeek = DateTime.Now.DayOfWeek.ToString();
-            if (dayOfTheWeek == "Monday" || dayOfTheWeek == "Tuesday" || dayOfTheWeek == "Wednesday" || dayOfTheWeek == "Thursday" || dayOfTheWeek == "Friday")
+            var dayOfTheWeek = DateTime.Today.DayOfWeek.ToString();
+
+            if (dayOfTheWeek != "Saturday" && dayOfTheWeek != "Sunday")
             {
-                return 10;
+                return TEN_PERCENT_DISCOUNT;
             }
 
             return 0;

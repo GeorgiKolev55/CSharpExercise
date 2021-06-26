@@ -6,6 +6,7 @@ namespace Store
 {
     class Appliance : Products, IDiscount
     {
+        private const int FIVE_PERCENT_DISCOUNT = 5;
         public string Model { get; set; }
 
         public DateTime ProductionDate { get; set; }
@@ -14,7 +15,7 @@ namespace Store
 
         public override string ToReceipt(float amount)
         {
-            string toReturn = base.ToReceipt(amount) + $" {Model}\n{amount} x ${this.Price} = ${(decimal)amount * this.Price:F2}\n";
+            string toReturn = base.ToString() + $" {Model}\n{amount} x ${this.Price} = ${(decimal)amount * this.Price:F2}\n";
            
             if (CheckForDiscount() != 0)
             {
@@ -35,7 +36,7 @@ namespace Store
 
             if ((dayOfTheWeek == "Saturday" || dayOfTheWeek == "Sunday") && this.Price > 999)
             {
-                return 5;
+                return FIVE_PERCENT_DISCOUNT;
             }
 
             return 0;

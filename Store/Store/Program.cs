@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Store
 {
@@ -13,8 +11,8 @@ namespace Store
             
             Beverage milk = new Beverage() { Name = "milk", Brand = "BrandM", Price = 0.99m, ExpirationDate = DateTime.Parse("02.03.22") };
 
-
             Clothes shirt = new Clothes() { Name = "T-shirt", Brand = "BransT", Color = "violet", Size = ClothesSize.M, Price = 15.99m };
+            
             Appliance laptop = new Appliance() { Name = "laptop", Brand = "BrandL", Price = 2345m, Model = "ModelL", ProductionDate = DateTime.Parse("03-03-20"), Weight = 1.125 };
 
             Cart cart = new Cart();
@@ -25,8 +23,11 @@ namespace Store
             cart.AddProduct(laptop, 1);
 
             var date = cart.PurchaseDateTime();
+
             Cashier cashier = new Cashier();
+
             cashier.PrintReceipt(cart.GetAllProducts, date);
+            
         }
     }
 }

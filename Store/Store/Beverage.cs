@@ -6,11 +6,14 @@ namespace Store
 {
     class Beverage : Products, IDiscount
     {
+        private const int FIFTHY_PERCENT_DISCOUNT = 50;
+        private const int TEN_PERCENT_DISCOUNT = 10;
+
         public DateTime ExpirationDate { get; set; }
 
         public override string ToReceipt(float amount)
         {
-            string toReturn = base.ToReceipt(amount) + $"\n{amount} x {this.Price} = {(decimal)amount * this.Price:F2}\n";
+            string toReturn = base.ToString() + $"\n{amount} x {this.Price} = {(decimal)amount * this.Price:F2}\n";
 
             if (CheckForDiscount() != 0)
             {
@@ -27,22 +30,14 @@ namespace Store
         public int CheckForDiscount()
         {
 
-            int currentDay = DateTime.Now.Day;
-            int currentMonth = DateTime.Now.Month;
-            int currentYear = DateTime.Now.Year;
-
-            int productDay = ExpirationDate.Day;
-            int productMonth = ExpirationDate.Month;
-            int productYear = ExpirationDate.Year;
-
-            if (productYear == currentYear && productMonth == currentMonth && productDay == currentDay)
+            if (this.ExpirationDate.Equals(DateTime.Now))
             {
-                return 50;
+                return FIFTHY_PERCENT_DISCOUNT;
             }
 
-            else if (productYear == currentYear && productMonth == currentMonth && productDay < currentDay + 5)
+            else if (this.ExpirationDate < DateTime.Now.AddDays(5))
             {
-                return 10;
+                return TEN_PERCENT_DISCOUNT;
             }
             return 0;
         }
