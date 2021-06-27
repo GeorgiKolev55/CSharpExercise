@@ -6,8 +6,8 @@ namespace Store
 {
     class Food : Products, IDiscount
     {
-        private const int FIFTHY_PERCENT_DISCOUNT = 50;
-        private const int TEN_PERCENT_DISCOUNT = 10;
+        private const int FiftyPercentDiscount = 50;
+        private const int TenPercentDiscount = 10;
 
         public DateTime ExpirationDate { get; set; }
 
@@ -33,12 +33,12 @@ namespace Store
 
             if (this.ExpirationDate.Equals(DateTime.Now))
             {
-                return FIFTHY_PERCENT_DISCOUNT;
+                return FiftyPercentDiscount;
             }
            
             else if (this.ExpirationDate<DateTime.Now.AddDays(5))
             {
-                return TEN_PERCENT_DISCOUNT;
+                return TenPercentDiscount;
             }
             return 0;
         }

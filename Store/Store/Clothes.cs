@@ -13,7 +13,7 @@ namespace Store
     }
     class Clothes : Products, IDiscount
     {
-        private const int TEN_PERCENT_DISCOUNT = 10;
+        private const int TenPercentDiscount = 10;
         
         public ClothesSize Size { get; set; }
 
@@ -43,7 +43,7 @@ namespace Store
 
             if (dayOfTheWeek != "Saturday" && dayOfTheWeek != "Sunday")
             {
-                return TEN_PERCENT_DISCOUNT;
+                return TenPercentDiscount;
             }
 
             return 0;

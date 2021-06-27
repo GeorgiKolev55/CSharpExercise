@@ -6,7 +6,7 @@ namespace Store
 {
     class Appliance : Products, IDiscount
     {
-        private const int FIVE_PERCENT_DISCOUNT = 5;
+        private const int FivePercentDiscount = 5;
 
         public string Model { get; set; }
 
@@ -39,7 +39,7 @@ namespace Store
 
             if ((dayOfTheWeek == "Saturday" || dayOfTheWeek == "Sunday") && this.Price > priceForDiscount)
             {
-                return FIVE_PERCENT_DISCOUNT;
+                return FivePercentDiscount;
             }
 
             return 0;
