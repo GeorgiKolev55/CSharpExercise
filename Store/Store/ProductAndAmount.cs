@@ -7,7 +7,7 @@ namespace Store
 
         public Products Product { get; set; }
 
-        public float Amount { get; set; }
+        public decimal Amount { get; set; }
 
     }
 }

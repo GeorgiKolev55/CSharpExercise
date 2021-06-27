@@ -19,15 +19,15 @@ namespace Store
 
         public string Color { get; set; }
 
-        public override string ToReceipt(float amount)
+        public override string ToReceipt(decimal amount)
         {
-            string toReturn = base.ToString() + $" {Color}\n{amount} x ${this.Price} = ${(decimal)amount * this.Price:F2}\n";
+            string toReturn = base.ToString() + $" {Color}\n{amount} x ${this.Price} = ${amount * this.Price:F2}\n";
            
             if (CheckForDiscount() != 0)
             {
                 int discount = CheckForDiscount();
 
-                var discountInDollars = ((decimal)amount * this.Price) / (100 / discount);
+                var discountInDollars = (amount * this.Price) / (100 / discount);
                 base.discountOfProduct = discountInDollars;
 
                 toReturn += $"#discount {discount}% -${discountInDollars:F2}\n";

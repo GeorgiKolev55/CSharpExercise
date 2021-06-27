@@ -17,7 +17,7 @@ namespace Store
 
             Cart cart = new Cart();
 
-            cart.AddProduct(food, 2.45f);
+            cart.AddProduct(food, 2.45m);
             cart.AddProduct(milk, 3);
             cart.AddProduct(shirt, 2);
             cart.AddProduct(laptop, 1);

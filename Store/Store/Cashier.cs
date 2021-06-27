@@ -22,7 +22,7 @@ namespace Store
                 var amount = item.Amount;
                 var product = item.Product;
 
-                decimal price = (decimal)amount * product.Price;
+                decimal price = amount * product.Price;
                 totalSum += price;
 
                 receipt.Append(product.ToReceipt(amount));

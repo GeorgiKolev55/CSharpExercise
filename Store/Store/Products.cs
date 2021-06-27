@@ -16,7 +16,7 @@ namespace Store
         public decimal Price { get; set; }
 
         
-        public virtual string ToReceipt(float amount)
+        public virtual string ToReceipt(decimal amount)
         {
             return "";
         }

@@ -15,7 +15,7 @@ namespace Store
         public List<ProductAndAmount> GetAllProducts => this.products;
 
 
-        public void AddProduct(Products product, float amount)
+        public void AddProduct(Products product, decimal amount)
         {
             ProductAndAmount productAndAmount = new ProductAndAmount() { Product = product, Amount = amount };
             products.Add(productAndAmount);
