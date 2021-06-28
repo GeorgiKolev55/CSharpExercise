@@ -7,7 +7,7 @@ namespace Store
     class Products
     {
 
-        internal decimal discountOfProduct;
+        protected internal decimal discountOfProduct;
 
         public string Name { get; set; }
 
