@@ -9,6 +9,7 @@ namespace Maze
         private readonly int x;
         private readonly int y;
         private readonly Node previous;
+
         public Node(int x,int y,Node previous)
         {
             this.x = x;
@@ -18,7 +19,7 @@ namespace Maze
 
         public int X { get { return this.x; } }
         public int Y { get { return this.y; } }
-        public Node Parent { get { return this.previous; } }
+        public Node Previous { get { return this.previous; } }
 
         public override string ToString()
         {

@@ -25,6 +25,7 @@ namespace Maze
             PrintMaze(matrinx);
 
             Node final = FindShortestPath(0, 0, matrinx);
+
             int steps =PrintPath(final);
 
             Console.WriteLine("Shortest Path is {0} steps",steps);
@@ -32,6 +33,7 @@ namespace Maze
         public static Node FindShortestPath(int x, int y, int[,] martix)
         {
             int[] exit = { martix.GetLength(0) - 1, martix.GetLength(1) - 1 };
+
             Node source = new Node(x, y, null);
 
             int[] rowCordinates = { -1, 0, 1, 0 };
@@ -56,6 +58,7 @@ namespace Maze
                 {
                     int row = currentNode.X + rowCordinates[i];
                     int col = currentNode.Y + colCordinates[i];
+
                     if (IsInBoundraies(row, col, martix) && !isVisited.Contains(row + " " + col) && martix[row, col] == 1)
                     {
                         queue.Enqueue(new Node(row, col, currentNode));
@@ -85,13 +88,14 @@ namespace Maze
             {
                 return 0;
             }
-            int len = PrintPath(node.Parent);
+
+            int len = PrintPath(node.Previous);
+
             Console.Write("({0}) ",node.ToString());
             return len + 1;
         }
         private static bool IsInBoundraies(int x, int y, int[,] matrix)
         {
-
             return x >= 0 && x < matrix.GetLength(0) && y >= 0 && y < matrix.GetLength(1);
         }
     }
