@@ -23,8 +23,10 @@ namespace Maze
             };
 
             PrintMaze(matrinx);
+
             Node final = FindShortestPath(0, 0, matrinx);
             int steps =PrintPath(final);
+
             Console.WriteLine("Shortest Path is {0} steps",steps);
         }
         public static Node FindShortestPath(int x, int y, int[,] martix)
@@ -34,6 +36,7 @@ namespace Maze
 
             int[] rowCordinates = { -1, 0, 1, 0 };
             int[] colCordinates = { 0, -1, 0, 1 };
+
             Queue<Node> queue = new Queue<Node>();
             queue.Enqueue(source);
 
@@ -63,7 +66,9 @@ namespace Maze
             return null;
 
         }
-        private static void PrintMaze(int[,] maze) {
+        private static void PrintMaze(int[,] maze)
+        {
+
             for (int i = 0; i < maze.GetLength(0); i++)
             {
                 for (int j = 0; j < maze.GetLength(1); j++)
