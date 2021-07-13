@@ -15,6 +15,7 @@ namespace Maze
             this.x = x;
             this.y = y;
             this.previous = previous;
+           
         }
 
         public int X { get { return this.x; } }

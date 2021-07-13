@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 namespace Maze
 {
-
-
+   
     class Program
     {
+
         static void Main(string[] args)
         {
-
-            int[,] matrinx =
+           
+           
+            int[,] maze =
             {
                   {1, 0, 1, 1, 1, 1 },
                   {1, 0, 1, 0, 1, 1 },
@@ -21,28 +22,58 @@ namespace Maze
                   {1, 0, 1, 1, 1, 1 }
                   
             };
-
-            PrintMaze(matrinx);
-
-            Node final = FindShortestPath(0, 0, matrinx);
-
+            
+            PrintMaze(maze);
+            
+            Node final = FindShortestPath(0, 0, maze);
+            
             int steps =PrintPath(final);
-
+            
             Console.WriteLine("Shortest Path is {0} steps",steps);
+        }
+        private static void PrintMaze(int[,] maze)
+        {
+
+            for (int i = 0; i < maze.GetLength(0); i++)
+            {
+                for (int j = 0; j < maze.GetLength(1); j++)
+                {
+                    Console.Write(maze[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+        private static int PrintPath(Node node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            int len = PrintPath(node.Previous);
+
+            Console.Write("({0}) ", node.ToString());
+            return len + 1;
+        }
+        private static bool IsInBoundraies(int x, int y, int[,] matrix)
+        {
+            return x >= 0 && x < matrix.GetLength(0) && y >= 0 && y < matrix.GetLength(1);
         }
         public static Node FindShortestPath(int x, int y, int[,] martix)
         {
-            int[] exit = { martix.GetLength(0) - 1, martix.GetLength(1) - 1 };
+            int[] exit = { martix.GetLength(0) - 1, martix.GetLength(1) - 1 };  //destination cell
 
             Node source = new Node(x, y, null);
 
-            int[] rowCordinates = { -1, 0, 1, 0 };
-            int[] colCordinates = { 0, -1, 0, 1 };
+            int[] rowCordinates = { -1, 0, 0, 1 };  
+            int[] colCordinates = { 0, -1, 1, 0 };
 
             Queue<Node> queue = new Queue<Node>();
             queue.Enqueue(source);
 
             HashSet<string> isVisited = new HashSet<string>();
+
             isVisited.Add(source.X + " " + source.Y);
 
 
@@ -69,34 +100,6 @@ namespace Maze
             return null;
 
         }
-        private static void PrintMaze(int[,] maze)
-        {
-
-            for (int i = 0; i < maze.GetLength(0); i++)
-            {
-                for (int j = 0; j < maze.GetLength(1); j++)
-                {
-                    Console.Write(maze[i,j]+" ");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-        }
-        private static int PrintPath(Node node)
-        {
-            if (node == null)
-            {
-                return 0;
-            }
-
-            int len = PrintPath(node.Previous);
-
-            Console.Write("({0}) ",node.ToString());
-            return len + 1;
-        }
-        private static bool IsInBoundraies(int x, int y, int[,] matrix)
-        {
-            return x >= 0 && x < matrix.GetLength(0) && y >= 0 && y < matrix.GetLength(1);
-        }
+       
     }
 }
