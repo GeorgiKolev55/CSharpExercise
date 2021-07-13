@@ -4,14 +4,13 @@ using System.Collections.Generic;
 
 namespace Maze
 {
-   
+
     class Program
     {
 
         static void Main(string[] args)
         {
-           
-           
+
             int[,] maze =
             {
                   {1, 0, 1, 1, 1, 1 },
@@ -20,16 +19,23 @@ namespace Maze
                   {0, 0, 1, 0, 1, 0 },
                   {1, 1, 1, 0, 1, 1 },
                   {1, 0, 1, 1, 1, 1 }
-                  
+
             };
-            
+
             PrintMaze(maze);
-            
-            Node final = FindShortestPath(0, 0, maze);
-            
-            int steps =PrintPath(final);
-            
-            Console.WriteLine("Shortest Path is {0} steps",steps);
+
+            Node finalCell = FindShortestPath(0, 0, maze);
+            if (finalCell != null)
+            {
+                int steps = PrintPath(finalCell);
+
+                Console.WriteLine("Shortest Path is {0} steps", steps);
+            }
+            else
+            {
+                Console.WriteLine("The path is not valid !");
+            }
+
         }
         private static void PrintMaze(int[,] maze)
         {
@@ -44,6 +50,8 @@ namespace Maze
             }
             Console.WriteLine();
         }
+
+        //Function for printing the shortest path
         private static int PrintPath(Node node)
         {
             if (node == null)
@@ -62,11 +70,13 @@ namespace Maze
         }
         public static Node FindShortestPath(int x, int y, int[,] martix)
         {
-            int[] exit = { martix.GetLength(0) - 1, martix.GetLength(1) - 1 };  //destination cell
+
+            int[] destinationCell = { martix.GetLength(0) - 1, martix.GetLength(1) - 1 };
 
             Node source = new Node(x, y, null);
 
-            int[] rowCordinates = { -1, 0, 0, 1 };  
+            //These two arrays detail all four possible movements from a cell
+            int[] rowCordinates = { -1, 0, 0, 1 };
             int[] colCordinates = { 0, -1, 1, 0 };
 
             Queue<Node> queue = new Queue<Node>();
@@ -80,11 +90,12 @@ namespace Maze
             while (queue.Count != 0)
             {
                 var currentNode = queue.Dequeue();
-                if (currentNode.X == exit[0] && currentNode.Y == exit[1])
+                if (currentNode.X == destinationCell[0] && currentNode.Y == destinationCell[1])
                 {
                     return currentNode;
                 }
 
+                //Check all four possible directions
                 for (int i = 0; i < rowCordinates.Length; i++)
                 {
                     int row = currentNode.X + rowCordinates[i];
@@ -97,9 +108,10 @@ namespace Maze
                     }
                 }
             }
+            //return null if path is not possible
             return null;
 
         }
-       
+
     }
 }
