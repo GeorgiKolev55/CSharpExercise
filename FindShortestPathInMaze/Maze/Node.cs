@@ -7,27 +7,27 @@ namespace Maze
     class Node
     {
         //x and y are cordinates of a cell in the matrix(maze)
-        private readonly int x;
-        private readonly int y;
+        private readonly int rowCordinate;
+        private readonly int colCordinate;
 
         //maintain the previous node for printing the final path
         private readonly Node previous;
 
         public Node(int x,int y,Node previous)
         {
-            this.x = x;
-            this.y = y;
+            this.rowCordinate = x;
+            this.colCordinate = y;
             this.previous = previous;
            
         }
 
-        public int X { get { return this.x; } }
-        public int Y { get { return this.y; } }
+        public int RowCordinate { get { return this.rowCordinate; } }
+        public int ColCordinate { get { return this.colCordinate; } }
         public Node Previous { get { return this.previous; } }
 
         public override string ToString()
         {
-            return this.X+" "+this.Y;
+            return this.RowCordinate+" "+this.ColCordinate;
         }
     }
 }

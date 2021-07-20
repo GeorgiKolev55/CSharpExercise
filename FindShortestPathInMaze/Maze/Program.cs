@@ -76,30 +76,30 @@ namespace Maze
             Node source = new Node(x, y, null);
 
             //These two arrays detail all four possible movements from a cell
-            int[] rowCordinates = { -1, 0, 0, 1 };
-            int[] colCordinates = { 0, -1, 1, 0 };
+            int[] rowMoves = { -1, 0, 0, 1 };
+            int[] colMoves = { 0, -1, 1, 0 };
 
             Queue<Node> queue = new Queue<Node>();
             queue.Enqueue(source);
 
             HashSet<string> isVisited = new HashSet<string>();
 
-            isVisited.Add(source.X + " " + source.Y);
+            isVisited.Add(source.RowCordinate + " " + source.ColCordinate);
 
 
             while (queue.Count != 0)
             {
                 var currentNode = queue.Dequeue();
-                if (currentNode.X == destinationCell[0] && currentNode.Y == destinationCell[1])
+                if (currentNode.RowCordinate == destinationCell[0] && currentNode.ColCordinate == destinationCell[1])
                 {
                     return currentNode;
                 }
 
                 //Check all four possible directions
-                for (int i = 0; i < rowCordinates.Length; i++)
+                for (int i = 0; i < rowMoves.Length; i++)
                 {
-                    int row = currentNode.X + rowCordinates[i];
-                    int col = currentNode.Y + colCordinates[i];
+                    int row = currentNode.RowCordinate + rowMoves[i];
+                    int col = currentNode.ColCordinate + colMoves[i];
 
                     if (IsInBoundraies(row, col, martix) && !isVisited.Contains(row + " " + col) && martix[row, col] == 1)
                     {
