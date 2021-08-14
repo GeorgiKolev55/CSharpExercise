@@ -1,0 +1,72 @@
+﻿@model DemoStore.Dtos.UserDtoImport
+@{
+    ViewData["Title"] = "RemoveUser";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .outDiv {
+            margin: auto;
+            width: 50%;
+        }
+
+        input[type=text], select, input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+            input[type=submit] {
+                width: 100%;
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+                input[type=submit]:hover {
+                    background-color: #45a049;
+                }
+
+        .divForm {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+  
+    <div class="outDiv">
+        <form asp-action="RemoveUser" asp-controller="Administrator" asp-antiforgery="true">
+
+            <div class="divForm">
+                <label asp-for="Username">name</label>
+                <input type="text" asp-for="Username" />
+                <span asp-validation-for="Username" />
+
+                <label asp-for="Password">password</label>
+                <input type="password" asp-for="Password" />
+                <span asp-validation-for="Password" />
+
+                <label asp-for="Role">role</label>
+                <select asp-for="Role">
+                    <option value="user">user</option>
+                    <option value="admin">admin</option>
+                </select>
+                <span asp-validation-for="Role" />
+
+                <input type="submit" value="Remove User" class="btn btn-outline-dark" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>

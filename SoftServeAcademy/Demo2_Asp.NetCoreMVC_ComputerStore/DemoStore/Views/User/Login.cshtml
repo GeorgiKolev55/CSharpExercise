@@ -1,0 +1,22 @@
+﻿@model DemoStore.Dtos.UserDtoImport
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Log in | <a asp-action="Register" asp-controller="User">Registration</a></h1>
+
+<form asp-action="Login" asp-controller="User" asp-antiforgery="true">
+    <div>
+        <label asp-for="Username">Username</label>
+        <input type="text" asp-for="Username" />
+        <span asp-validation-for="Username" />
+    </div>
+    <div>
+        <label asp-for="Password">Password</label>
+        <input type="password" asp-for="Password" />
+        <span asp-validation-for="Password" />
+    </div>
+    <div>
+        <input type="submit" value="Login" class="btn btn-outline-dark" />
+    </div>
+</form>

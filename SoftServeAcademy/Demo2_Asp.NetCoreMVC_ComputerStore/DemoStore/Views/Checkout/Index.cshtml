@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <h3>Checkout Page</h3>
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>Total Amount to Pay</th>
+            <th>Date of the Purchase</th>
+            <th>Credit/Debit card ID</th>
+        </tr>
+        <tr>
+            <td align="right">
+                @ViewBag.total
+            </td>
+            <td>@DateTime.Now</td>
+            <td><input type="text"/></td>
+        </tr>
+    </table>
+    <a class="navbar-brand" asp-area="" asp-controller="Checkout" asp-action="BuyNow">
+        <img src="~/images/buyNow.jpg" alt="Alternate Text" width="120" />
+    </a>
+</body>
+</html>
+

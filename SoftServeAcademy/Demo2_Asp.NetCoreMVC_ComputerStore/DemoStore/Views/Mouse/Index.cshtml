@@ -1,0 +1,46 @@
+﻿
+
+@{
+    ViewData["Title"] = "Mouse";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Index</title>
+</head>
+<body>
+   
+        <h3>Mouses</h3>
+        <table cellpadding="2" cellspacing="2" border="1" align="center">
+
+            <tr>
+                <th>Name</th>
+                <th>Photo</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Buy</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td><img width="160" src="~/images/@item.Photo" /></td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td align="center">
+                        <a asp-controller="cart" asp-action="buy" asp-route-id="@item.Id">Add to Cart</a>
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+        
+    
+</body>
+
+</html>
+

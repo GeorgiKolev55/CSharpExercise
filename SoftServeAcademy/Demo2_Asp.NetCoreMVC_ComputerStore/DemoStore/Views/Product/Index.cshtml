@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Products</title>
+
+    <style>
+        
+        .bagger {
+            margin-left:8.5cm;
+            align-content:center;
+            position: relative;
+            width: 50%;
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+        }
+
+        .bagger:hover .overlay {
+            opacity: 0.6;
+        }
+
+        .text {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a class="navbar-brand" asp-area="" asp-controller="Mouse" asp-action="Index">
+        <div class="bagger">
+            <img src="~/images/mouse2.jpg" alt="Alternate Text" height="165" width="230"  class="image" />
+            <div class="overlay">
+                <div class="text">Mouses</div>
+            </div>
+        </div>
+    </a>
+
+    <a class="navbar-brand" asp-area="" asp-controller="Laptop" asp-action="Index">
+        <div class="bagger">
+            <img src="~/images/computer2.jpg" alt="Alternate Text" height="165" width="230"  class="image" />
+            <div class="overlay">
+                <div class="text">Laptops</div>
+            </div>
+        </div>
+    </a>
+    <a class="navbar-brand" asp-area="" asp-controller="Monitor" asp-action="Index">
+        <div class="bagger">
+            <img src="~/images/monitor1.jpg" alt="Alternate Text" height="165" width="230"  class="image" />
+            <div class="overlay">
+                <div class="text">Monitors</div>
+            </div>
+        </div>
+    </a>
+    <a class="navbar-brand" asp-area="" asp-controller="Keyboard" asp-action="Index">
+        <div class="bagger">
+            <img src="~/images/keyboard.jpg" alt="Alternate Text" height="165" width="230" class="image" />
+            <div class="overlay">
+                <div class="text">Keyboards</div>
+            </div>
+        </div>
+    </a>
+</body>
+</html>
