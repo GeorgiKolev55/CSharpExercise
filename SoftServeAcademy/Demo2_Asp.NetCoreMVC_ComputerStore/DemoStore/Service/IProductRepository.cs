@@ -1,4 +1,5 @@
 ﻿using DemoStore.Models;
+using DemoStore.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace DemoStore.Data
 {
     public interface IProductRepository
     {
-      public  IEnumerable<Product> GetAll(string type);
+      public  IEnumerable<Product> GetAll(ProductType type);
         public Product FindById(int id);    
 
         public void DecreaseQuantity(Product p, int Quantity);

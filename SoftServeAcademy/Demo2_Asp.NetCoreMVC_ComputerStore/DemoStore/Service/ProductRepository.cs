@@ -1,4 +1,5 @@
 ﻿using DemoStore.Models;
+using DemoStore.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +36,11 @@ namespace DemoStore.Data
         }
 
 
-        public IEnumerable<Product> GetAll(string type)
+        public IEnumerable<Product> GetAll(ProductType type)
         {
             foreach (var item in storeContext.Products)
             {
-                if (item.Type == type)
+                if (item.Type == type.ToString())
                 {
 
                     yield return item;

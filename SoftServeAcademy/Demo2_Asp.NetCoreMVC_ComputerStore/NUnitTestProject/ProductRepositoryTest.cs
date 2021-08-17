@@ -1,5 +1,6 @@
 using DemoStore.Data;
 using DemoStore.Models;
+using DemoStore.Models.Enum;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System.Linq;
@@ -37,9 +38,9 @@ namespace NUnitTestProject
 
             IProductRepository productRepository = new ProductRepository(mockStoreContext);
 
-            var mouseProducts = productRepository.GetAll("mouse");
+            var mouseProducts = productRepository.GetAll(ProductType.mouse);
          
-            var actual = mouseProducts.FirstOrDefault(x => x.Type != "mouse");
+            var actual = mouseProducts.FirstOrDefault(x => x.Type != ProductType.mouse.ToString());
 
             Assert.IsNull(actual);
         }

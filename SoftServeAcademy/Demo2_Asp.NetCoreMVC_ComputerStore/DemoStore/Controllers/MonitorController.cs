@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DemoStore.Data;
+using DemoStore.Models.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoStore.Controllers
@@ -21,9 +22,7 @@ namespace DemoStore.Controllers
         [Route("")]
         public IActionResult Index()
         {
-            var productType = "monitor";
-
-            var monitorProducts = productRepository.GetAll(productType); 
+            var monitorProducts = productRepository.GetAll(ProductType.monitor); 
 
             return View(monitorProducts);
         }

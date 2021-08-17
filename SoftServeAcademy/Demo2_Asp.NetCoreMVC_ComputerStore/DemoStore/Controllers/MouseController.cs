@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DemoStore.Data;
-
+using DemoStore.Models.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -25,9 +25,7 @@ namespace DemoStore.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var productType = "mouse";
-
-            var mouseProducts= productRepository.GetAll(productType);
+            var mouseProducts= productRepository.GetAll(ProductType.mouse);
 
             return View(mouseProducts);
         }
