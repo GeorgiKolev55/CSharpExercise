@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System.Linq;
 
-namespace NUnitTestProject
+namespace DemoStoreTests
 {
     public class ProductRepositoryTest
     {
